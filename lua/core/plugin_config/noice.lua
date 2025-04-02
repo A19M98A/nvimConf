@@ -1,4 +1,3 @@
--- lua/core/plugin_config/noice.lua
 return {
   cmdline = {
     enabled = true, -- enables the Noice cmdline UI
@@ -6,11 +5,6 @@ return {
     opts = {}, -- global options for the cmdline. See section on views
     ---@type table<string, CmdlineFormat>
     format = {
-      -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
-      -- view: (default is cmdline view)
-      -- opts: any options passed to the view
-      -- icon_hl_group: optional hl_group for the icon
-      -- title: set to anything or empty string to hide
       cmdline = { pattern = "^:", icon = "", lang = "vim" },
       search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
       search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
@@ -36,21 +30,16 @@ return {
     ---@type 'nui'|'cmp'
     backend = "nui", -- backend to use to show regular cmdline completions
     ---@type NoicePopupmenuItemKind|false
-    -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
     kind_icons = {}, -- set to `false` to disable icons
   },
-  -- default options for require('noice').redirect
-  -- see the section on Command Redirection
   ---@type NoiceRouteConfig
   redirect = {
     view = "popup",
     filter = { event = "msg_show" },
   },
-  -- You can add any custom commands below that will be available with `:Noice command`
   ---@type table<string, NoiceCommand>
   commands = {
     history = {
-      -- options for the message history that you get with `:Noice`
       view = "split",
       opts = { enter = true, format = "details" },
       filter = {
@@ -94,14 +83,10 @@ return {
     },
   },
   notify = {
-    -- Noice can be used as `vim.notify` so you can route any notification like other messages
-    -- Notification messages have their level and other properties set.
-    -- event is always "notify" and kind can be any log level as a string
-    -- The default routes will forward notifications to nvim-notify
-    -- Benefit of using Noice for this is the routing and consistent history view
     enabled = true,
     view = "notify",
     timeout = nil,
+    priority = 2,
   },
   lsp = {
     progress = {

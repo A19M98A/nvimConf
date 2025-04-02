@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "solargraph", "tsserver" }
+    ensure_installed = { "solargraph", "ts_ls", "lua_ls", "pyright" }, -- Valid server names
 })
 
 local lspconfig = require('lspconfig')
@@ -29,14 +29,14 @@ require("lspconfig").lua_ls.setup {
 }
 
 require("lspconfig").solargraph.setup({})
-require("lspconfig").tsserver.setup({})
+require("lspconfig").ts_ls.setup({})
 require("lspconfig").gopls.setup({})
 require("lspconfig").tailwindcss.setup({})
-require("lspconfig").clangd.setup{{
-  filetypes = { "c", "cpp", "h", "hpp", "cc", "hh" }, -- Explicitly list supported extensions
+require("lspconfig").clangd.setup({
+  filetypes = { "c", "cpp", "h", "hpp", "cc", "hh", "python3" }, -- Explicitly list supported extensions
   cmd = { "clangd", "--background-index" },
   single_file_support = true,
-}}
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -47,10 +47,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', '<space>gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<space>K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<space>gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<space>wl', function()
