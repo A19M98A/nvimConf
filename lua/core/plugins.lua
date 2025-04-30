@@ -80,5 +80,12 @@ require("lazy").setup({
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     }
+  },
+  {
+    "AckslD/nvim-neoclip.lua",
+    dependencies = {
+      'kkharji/sqlite.lua',
+      {'nvim-telescope/telescope.nvim'},
+    },
   }
 })
