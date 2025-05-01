@@ -88,5 +88,11 @@ require("lazy").setup({
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {"AckslD/nvim-neoclip.lua",
+    dependencies = {
+      'kkharji/sqlite.lua',
+      {'nvim-telescope/telescope.nvim'},
+    },
   }
 })
