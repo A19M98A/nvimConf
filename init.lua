@@ -19,3 +19,5 @@ require("core.options")
 require("core.keymaps")
 require("core.plugins")
 require("core.plugin_config")
+
+vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#fcdf03" })

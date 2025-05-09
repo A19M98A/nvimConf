@@ -9,8 +9,8 @@ vim.opt.cursorline = true
 vim.opt.autoread = true
 
 -- use spaces for tabs and whatnot
-vim.opt.tabstop = 8
-vim.opt.shiftwidth = 8
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
@@ -19,3 +19,5 @@ vim.cmd [[ set termguicolors ]]
 
 --Line numbers
 vim.wo.number = true
+
+vim.opt.relativenumber = true
