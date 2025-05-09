@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap('n', '<c-l>', ':wincmd l<CR>', { noremap = true, silent 
 --
 vim.api.nvim_set_keymap('n', '<leader>h', ':nohlsearch<CR>', { noremap = true, silent = true })
 --
-
+vim.keymap.set('n', '<c-g>',  "<cmd>LazyGit<cr>")
 -- In your main keymap file (e.g., lua/core/keymaps.lua)
 
 local map = vim.keymap.set
